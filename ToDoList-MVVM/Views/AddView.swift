@@ -19,23 +19,31 @@ struct AddView: View {
     var body: some View {
         ScrollView {
             VStack {
-                TextField("Type here...", text: $txt)
+                TextField("Enter the task...", text: $txt)
                     .padding(.horizontal)
                     .frame(height: 50)
                     .background(Color(red: 237/255, green: 237/255, blue: 237/255))
-                    .cornerRadius(15)
+                    .cornerRadius(25)
                 
-                Button(action: saveButton, label: {
-                    Text("Save".uppercased())
-                        .frame(height: 50)
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(.white)
-                        .background(Color.accentColor)
-                        .cornerRadius(15)
-                })
+                HStack {
+                    Spacer()
+                    Button(action: saveButton, label: {
+                        Text("Save".uppercased())
+                            .bold()
+                            .frame(height: 40)
+                            .frame(maxWidth: 100)
+                            .foregroundColor(.white)
+                            .background(Color.accentColor)
+                            .cornerRadius(30)
+                            .shadow(radius: 5)
+                    })
+                }
             }
+            .scaleEffect(x: -1, y: -1, anchor: .center)
             .padding(15)
         }
+//        .rotationEffect(Angle(degrees: 180))
+        .scaleEffect(x: -1, y: -1, anchor: .center)
         .navigationTitle("Add an item ✏️")
         .alert(isPresented: $showAlert, content: getAlert)
     }
